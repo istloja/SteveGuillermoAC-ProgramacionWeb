@@ -4,8 +4,9 @@
                 template="./plantilla1.xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:p="http://primefaces.org/ui"
-                <!xmlns:p="http://primefaces.org/ui">
-    xmlns:pe="http://primefaces.org/ui/extensions"> 
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    
 
     <ui:define name="top">
         top
@@ -69,12 +70,56 @@
     </ui:define>
 
     <ui:define name="bottom">
-        <h:form
-            <p:panelGrid
+        <h:form>
+<p:panelGrid>
+                <p:inputNumber value="#{primerBean.valor1}" maxValue="100" decimalPlaces="2" decimalSeparator=";" emptyValue="Ingrese un valor" >
+                    <p:ajax update="p1" />
+                </p:inputNumber>
+                <p:outputLabel id="salida1" value="#{primerBean.valor1}"></p:outputLabel>
+                <p:inputText disabled="true" id="p1" value="#{primerBean.valor1}"></p:inputText>
+                <p:inputSwitch></p:inputSwitch>
+                <br></br>
                 
-                <p:inputNumber></p:inputNumber>
-                ></p:panelGrid>
+                
+                <p:outputLabel value="Ingrese su nombre"></p:outputLabel>
+                <p:inputText value="#{primerBean.nombre}">
+                    <p:ajax update="nombre" />
+                </p:inputText>
+                <p:outputLabel id="nombre" value="#{primerBean.nombre}"/>              
+            </p:panelGrid>                     
+            <p:outputLabel value="Materias: "></p:outputLabel>          
+            <p:selectOneButton  id="opcion1" value="#{primerBean.opcion}">            
+                <f:selectItem itemLabel="Ingles IV" itemValue="Ingles IV"/>
+                <f:selectItem itemLabel="Prog Web" itemValue="Prog Web"/>
+                <f:selectItem itemLabel="Prog Movil" itemValue="Prog Movil"/>
+                <f:selectItem itemLabel="Div Cultural" itemValue="Div Cultural"/>
+                <f:selectItem itemLabel="Leg Informat" itemValue="Leg Informat"/>
+                <f:selectItem itemLabel="Est Descript" itemValue="Est Descript"/>
+                <p:ajax update="opcion"/>
+            </p:selectOneButton>          
+           
+            <p:outputLabel id="opcion" value="#{primerBean.opcion}" >               
+                 
+            </p:outputLabel>
+            <br></br>
+                        <p:outputLabel value="Materias: "></p:outputLabel>          
+            <p:selectManyButton  id="opciones1" value="#{primerBean.lista}">            
+                <f:selectItem itemLabel="Ingles IV" itemValue="Ingles IV"/>
+                <f:selectItem itemLabel="Prog Web" itemValue="Prog Web"/>
+                <f:selectItem itemLabel="Prog Movil" itemValue="Prog Movil"/>
+                <f:selectItem itemLabel="Div Cultural" itemValue="Div Cultural"/>
+                <f:selectItem itemLabel="Leg Informat" itemValue="Leg Informat"/>
+                <f:selectItem itemLabel="Est Descript" itemValue="Est Descript"/>
+                <p:ajax update="opciones"/>
+            </p:selectManyButton>          
+           
+            <p:outputLabel id="opciones" value="#{primerBean.lista}" >               
+                 
+            </p:outputLabel>
             </h:form>
     </ui:define>
 
 </ui:composition>
+
+
+
