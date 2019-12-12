@@ -1,10 +1,27 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="./plantilla1.xhtml">
+                template="./plantilla1.xhtml"
+                xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="bottom">
-        pagina 2 bottom
+        <form>
+        <center> <h4>Ingrese</h4> 
+            <input type="text" name="Ingresar Usuario" value="#{primerBean.nombreUsuario}" required="true" /> 
+            
+            <h4>Ingrese su clave</h4> 
+            <input type="password"  name="Ingresar Clave"  value= "#{primerBean.claveUsuario}"   required="true"/> 
+            <p:growl>
+                <p:autoUpdate/>
+            </p:growl>
+            <br></br>
+        <p:commandButton value="Aceptar" action="#{login.add}"/>
+            <p:dialog header="Log in" widgetVar="login">
+                <p:outputLabel></p:outputLabel>
+            </p:dialog>
+            </center>
+        </form>
+     
     </ui:define>
 
 </ui:composition>
