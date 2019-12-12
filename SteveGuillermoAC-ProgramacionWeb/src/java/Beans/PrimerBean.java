@@ -6,6 +6,7 @@
 package Beans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
@@ -13,7 +14,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import org.primefaces.PrimeFaces;
-
+import Modelo.Usuarios;
+import javax.servlet.http.HttpSession;
 @Named(value = "primerBean")
 @ViewScoped
 public class PrimerBean implements Serializable {
@@ -27,6 +29,10 @@ public class PrimerBean implements Serializable {
     private List <String> lista;
     private String nombreUsuario ;
     private String claveUsuario ;
+    List <Usuarios> listaUsuarios;
+
+   
+    
 
     public String getNombreUsuario() {
         return nombreUsuario;
@@ -77,23 +83,54 @@ public class PrimerBean implements Serializable {
     public void setValor1(int valor1) {
         this.valor1 = valor1;
     }
-    
+ 
     public PrimerBean() {
+     
+        listaUsuarios = new ArrayList<Usuarios>();
+        listaUsuarios.add(new Usuarios("Steve","12345","qwerty","Estudiante"));
+        listaUsuarios.add(new Usuarios("Jefferson","11111","asdfg","Docente"));
+        listaUsuarios.add(new Usuarios("Juan","22222","xcvb","Administrador"));
+        listaUsuarios.add(new Usuarios("Luis","33333","qazws","Estudiante"));
     }
-    public String add() {
-        String url=null;
+    public String IniciarSesion() {
+        
+        String url = "";
         FacesMessage message;
-        if(nombreUsuario.equals("usuario001") && claveUsuario.equals("123456")){
-            message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenido","");
-            url="/pagina_cliente2.xhtml?faces-redirect=true";
+        for (Usuarios user :listaUsuarios) {
+            
+            if (nombreUsuario != null && nombreUsuario.equals(user.getUsuario())&& claveUsuario != null && claveUsuario.equals(user.getClave()) ) {
+                if (user.getRol().equals("Administrador")) {
+                    url = "pagAdministrador.xhtml?faces-redirect=true";
+                    HttpSession sesion=(HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+                    sesion.setAttribute("usuario",user);
+                }
+                else{
+                
+                    if (user.getRol().equals("Estudiante")) {
+                        url = "pagEstudiante.xhtml?faces-redirect=true";
+                        
+                    }
+                    else{
+                        if (user.getRol().equals("Docente")) {
+                            url = "pagDocente.xhtml?faces-redirect=true";
+                            
+                        }
+                    }
+                
+                }
+            }
         }
-        else{
-            message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Datos Incorrectos","");
-        }
-        FacesContext.getCurrentInstance().addMessage(null, message);
+        
+//        if(nombreUsuario.equals("usuario001") && claveUsuario.equals("123456")){
+//            message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenido","");
+//           url="pagAdministrador?faces-redirect=true0";
+//        }
+//        else{
+//            message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Datos Incorrectos","");
+//        }
+//        FacesContext.getCurrentInstance().addMessage(null, message);
       return url;  
-    }
-
-    
+      
+    }   
 }
 

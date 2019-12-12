@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import Modelo.Usuarios;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
@@ -18,6 +19,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -108,8 +110,14 @@ public class NewFilter implements Filter {
         HttpServletResponse hsresponse = (HttpServletResponse) response;
         boolean loginn = false;
         boolean redireccionar = true;
-        String pag[] = {"/sga/index.xhtml", "/sga/welcomePrimefaces.xhtml"};
-
+        String pag[] = {"/sga/index.xhtml"};
+        HttpSession htpsesionguardado =hsrequest.getSession(true);
+        Usuarios usuario001 = (Usuarios) htpsesionguardado.getAttribute("usuario");
+        if (usuario001 != null) {
+            System.out.println("");
+            redireccionar =false;
+        }
+        
         if (loginn) {
             chain.doFilter(request, response);
         } else {
