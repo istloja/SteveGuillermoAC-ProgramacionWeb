@@ -97,7 +97,7 @@ public class PrimerBean implements Serializable {
         String url = "";
         FacesMessage message;
         for (Usuarios user :listaUsuarios) {
-            
+ 
             if (nombreUsuario != null && nombreUsuario.equals(user.getUsuario())&& claveUsuario != null && claveUsuario.equals(user.getClave()) ) {
                 if (user.getRol().equals("Administrador")) {
                     url = "pagAdministrador.xhtml?faces-redirect=true";

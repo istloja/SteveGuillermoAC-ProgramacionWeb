@@ -19,37 +19,38 @@
         </div>
 
         <div id="content" class="center_content">
+            <h:form>
+                <p:menubar>
+                    <p:submenu label="Administrador">
+
+                        <p:menuitem value="Configuracion"/>
+                        <p:menuitem value="Salir" />
+                    </p:submenu>
+
+                    <p:submenu label="Docente" >
+                        <p:menuitem value="Configuracion "/>
+                        <p:menuitem value="Salir"/>
+
+                    </p:submenu>
+
+                    <p:submenu label="Estudiante" >
+                        <p:menuitem value="Configuracion "/>
+                        <p:menuitem value="Salir"/>
+
+                    </p:submenu>
+
+                </p:menubar>
+            
+            </h:form>
+            
             
         </div>
-    <p:menubar>
-        <p:submenu label="Administrador" icon="pi pi-file">
-            <p:submenu label="Nuevo" icon="pi pi-briefcase">
-                <p:menuitem value="Configuracion" url="#" />
-                <p:menuitem value="Eliminar" url="#" />
-            </p:submenu>
-            <p:menuitem value="Agregar" url="#" />
-            <p:separator />
-            <p:menuitem value="Cambiar" url="#" />
-        </p:submenu>
- 
-        <p:submenu label="Docente" icon="pi pi-pencil">
-            <p:menuitem value="Agregar Estudiante" url="#" icon="pi pi-angle-double-left" />
-            <p:menuitem value="Modificar Estudiante" url="#" icon="pi pi-angle-double-right" />
-        </p:submenu>
- 
-        <p:submenu label="Estudiante" icon="pi pi-question">
-            <p:menuitem value="Agregar" url="#" />
-            <p:submenu label="Buscar" icon="pi pi-search">
-                <p:submenu label="Modificar">
-                    <p:menuitem value="ELiminar" url="#" />
-                </p:submenu>
-                <p:menuitem value="Subir" url="#" />
-            </p:submenu>
-        </p:submenu>
         <div id="bottom">
             <ui:insert name="bottom">Bottom</ui:insert>
+       
+
         </div>
-    </p:menubar>
+    
     </h:body>
 
 </html>
