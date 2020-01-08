@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePrestamoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePrestamoLabel_prestamoPK_idprestamo}" for="prestamoPK_idprestamo" />
+                    <h:inputText id="prestamoPK_idprestamo" value="#{prestamoController.selected.prestamoPK.idprestamo}" title="#{bundle.CreatePrestamoTitle_prestamoPK_idprestamo}" required="true" requiredMessage="#{bundle.CreatePrestamoRequiredMessage_prestamoPK_idprestamo}"/>
+                    <h:outputLabel value="#{bundle.CreatePrestamoLabel_prestamoPK_libroIdlibro}" for="prestamoPK_libroIdlibro" />
+                    <h:inputText id="prestamoPK_libroIdlibro" value="#{prestamoController.selected.prestamoPK.libroIdlibro}" title="#{bundle.CreatePrestamoTitle_prestamoPK_libroIdlibro}" required="true" requiredMessage="#{bundle.CreatePrestamoRequiredMessage_prestamoPK_libroIdlibro}"/>
+                    <h:outputLabel value="#{bundle.CreatePrestamoLabel_ingreso}" for="ingreso" />
+                    <h:inputText id="ingreso" value="#{prestamoController.selected.ingreso}" title="#{bundle.CreatePrestamoTitle_ingreso}" required="true" requiredMessage="#{bundle.CreatePrestamoRequiredMessage_ingreso}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreatePrestamoLabel_salida}" for="salida" />
+                    <h:inputText id="salida" value="#{prestamoController.selected.salida}" title="#{bundle.CreatePrestamoTitle_salida}" required="true" requiredMessage="#{bundle.CreatePrestamoRequiredMessage_salida}"/>
+                    <h:outputLabel value="#{bundle.CreatePrestamoLabel_bibliotecaIdbiblioteca}" for="bibliotecaIdbiblioteca" />
+                    <h:inputText id="bibliotecaIdbiblioteca" value="#{prestamoController.selected.bibliotecaIdbiblioteca}" title="#{bundle.CreatePrestamoTitle_bibliotecaIdbiblioteca}" required="true" requiredMessage="#{bundle.CreatePrestamoRequiredMessage_bibliotecaIdbiblioteca}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{prestamoController.create}" value="#{bundle.CreatePrestamoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{prestamoController.prepareList}" value="#{bundle.CreatePrestamoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePrestamoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPrestamoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPrestamoLabel_prestamoPK_idprestamo}"/>
+                    <h:outputText value="#{prestamoController.selected.prestamoPK.idprestamo}" title="#{bundle.ViewPrestamoTitle_prestamoPK_idprestamo}"/>
+                    <h:outputText value="#{bundle.ViewPrestamoLabel_prestamoPK_libroIdlibro}"/>
+                    <h:outputText value="#{prestamoController.selected.prestamoPK.libroIdlibro}" title="#{bundle.ViewPrestamoTitle_prestamoPK_libroIdlibro}"/>
+                    <h:outputText value="#{bundle.ViewPrestamoLabel_ingreso}"/>
+                    <h:outputText value="#{prestamoController.selected.ingreso}" title="#{bundle.ViewPrestamoTitle_ingreso}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPrestamoLabel_salida}"/>
+                    <h:outputText value="#{prestamoController.selected.salida}" title="#{bundle.ViewPrestamoTitle_salida}"/>
+                    <h:outputText value="#{bundle.ViewPrestamoLabel_bibliotecaIdbiblioteca}"/>
+                    <h:outputText value="#{prestamoController.selected.bibliotecaIdbiblioteca}" title="#{bundle.ViewPrestamoTitle_bibliotecaIdbiblioteca}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{prestamoController.destroyAndView}" value="#{bundle.ViewPrestamoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewPrestamoEditLink}"/>
+                <br />
+                <h:commandLink action="#{prestamoController.prepareCreate}" value="#{bundle.ViewPrestamoCreateLink}" />
+                <br />
+                <h:commandLink action="#{prestamoController.prepareList}" value="#{bundle.ViewPrestamoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewPrestamoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

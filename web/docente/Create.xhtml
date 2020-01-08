@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateDocenteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateDocenteLabel_iddocente}" for="iddocente" />
+                    <h:inputText id="iddocente" value="#{docenteController.selected.iddocente}" title="#{bundle.CreateDocenteTitle_iddocente}" required="true" requiredMessage="#{bundle.CreateDocenteRequiredMessage_iddocente}"/>
+                    <h:outputLabel value="#{bundle.CreateDocenteLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{docenteController.selected.nombre}" title="#{bundle.CreateDocenteTitle_nombre}" />
+                    <h:outputLabel value="#{bundle.CreateDocenteLabel_apellido}" for="apellido" />
+                    <h:inputText id="apellido" value="#{docenteController.selected.apellido}" title="#{bundle.CreateDocenteTitle_apellido}" />
+                    <h:outputLabel value="#{bundle.CreateDocenteLabel_telefono}" for="telefono" />
+                    <h:inputText id="telefono" value="#{docenteController.selected.telefono}" title="#{bundle.CreateDocenteTitle_telefono}" />
+                    <h:outputLabel value="#{bundle.CreateDocenteLabel_direccion}" for="direccion" />
+                    <h:inputText id="direccion" value="#{docenteController.selected.direccion}" title="#{bundle.CreateDocenteTitle_direccion}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{docenteController.create}" value="#{bundle.CreateDocenteSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{docenteController.prepareList}" value="#{bundle.CreateDocenteShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateDocenteIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

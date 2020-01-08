@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditLibroTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditLibroLabel_idlibro}" for="idlibro" />
+                    <h:inputText id="idlibro" value="#{libroController.selected.idlibro}" title="#{bundle.EditLibroTitle_idlibro}" required="true" requiredMessage="#{bundle.EditLibroRequiredMessage_idlibro}"/>
+                    <h:outputLabel value="#{bundle.EditLibroLabel_titulo}" for="titulo" />
+                    <h:inputText id="titulo" value="#{libroController.selected.titulo}" title="#{bundle.EditLibroTitle_titulo}" required="true" requiredMessage="#{bundle.EditLibroRequiredMessage_titulo}"/>
+                    <h:outputLabel value="#{bundle.EditLibroLabel_categoria}" for="categoria" />
+                    <h:inputText id="categoria" value="#{libroController.selected.categoria}" title="#{bundle.EditLibroTitle_categoria}" required="true" requiredMessage="#{bundle.EditLibroRequiredMessage_categoria}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{libroController.update}" value="#{bundle.EditLibroSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditLibroViewLink}"/>
+                <br />
+                <h:commandLink action="#{libroController.prepareList}" value="#{bundle.EditLibroShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditLibroIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

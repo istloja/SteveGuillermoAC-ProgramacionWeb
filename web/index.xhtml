@@ -4,11 +4,33 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
         <title>Facelet Title</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
     </h:head>
     <h:body>
         Hello from Facelets
         <br />
         <h:link outcome="/sga/welcomePrimefaces" value="Primefaces welcome page" />
+        <br />
+        <h:link outcome="/admin/List" value="Show All Admin Items"/>
+        <br />
+        <h:link outcome="/biblioteca/List" value="Show All Biblioteca Items"/>
+        <br />
+        <h:link outcome="/docente/List" value="Show All Docente Items"/>
+        <br />
+        <h:link outcome="/docenteHasEstudiante/List" value="Show All DocenteHasEstudiante Items"/>
+        <br />
+        <h:link outcome="/estudiante/List" value="Show All Estudiante Items"/>
+        <br />
+        <h:link outcome="/libro/List" value="Show All Libro Items"/>
+        <br />
+        <h:link outcome="/prestamo/List" value="Show All Prestamo Items"/>
     </h:body>
+
+
+
+
+
+
+
 </html>
 

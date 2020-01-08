@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditEstudianteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditEstudianteLabel_idestudiante}" for="idestudiante" />
+                    <h:inputText id="idestudiante" value="#{estudianteController.selected.idestudiante}" title="#{bundle.EditEstudianteTitle_idestudiante}" required="true" requiredMessage="#{bundle.EditEstudianteRequiredMessage_idestudiante}"/>
+                    <h:outputLabel value="#{bundle.EditEstudianteLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{estudianteController.selected.nombre}" title="#{bundle.EditEstudianteTitle_nombre}" />
+                    <h:outputLabel value="#{bundle.EditEstudianteLabel_apellido}" for="apellido" />
+                    <h:inputText id="apellido" value="#{estudianteController.selected.apellido}" title="#{bundle.EditEstudianteTitle_apellido}" />
+                    <h:outputLabel value="#{bundle.EditEstudianteLabel_telefono}" for="telefono" />
+                    <h:inputText id="telefono" value="#{estudianteController.selected.telefono}" title="#{bundle.EditEstudianteTitle_telefono}" />
+                    <h:outputLabel value="#{bundle.EditEstudianteLabel_direccion}" for="direccion" />
+                    <h:inputText id="direccion" value="#{estudianteController.selected.direccion}" title="#{bundle.EditEstudianteTitle_direccion}" />
+                </h:panelGrid>
+                <h:commandLink action="#{estudianteController.update}" value="#{bundle.EditEstudianteSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditEstudianteViewLink}"/>
+                <br />
+                <h:commandLink action="#{estudianteController.prepareList}" value="#{bundle.EditEstudianteShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditEstudianteIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

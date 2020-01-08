@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateDocenteHasEstudianteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateDocenteHasEstudianteLabel_docenteHasEstudiantePK_docenteIddocente}" for="docenteHasEstudiantePK_docenteIddocente" />
+                    <h:inputText id="docenteHasEstudiantePK_docenteIddocente" value="#{docenteHasEstudianteController.selected.docenteHasEstudiantePK.docenteIddocente}" title="#{bundle.CreateDocenteHasEstudianteTitle_docenteHasEstudiantePK_docenteIddocente}" required="true" requiredMessage="#{bundle.CreateDocenteHasEstudianteRequiredMessage_docenteHasEstudiantePK_docenteIddocente}"/>
+                    <h:outputLabel value="#{bundle.CreateDocenteHasEstudianteLabel_docenteHasEstudiantePK_estudianteIdestudiante}" for="docenteHasEstudiantePK_estudianteIdestudiante" />
+                    <h:inputText id="docenteHasEstudiantePK_estudianteIdestudiante" value="#{docenteHasEstudianteController.selected.docenteHasEstudiantePK.estudianteIdestudiante}" title="#{bundle.CreateDocenteHasEstudianteTitle_docenteHasEstudiantePK_estudianteIdestudiante}" required="true" requiredMessage="#{bundle.CreateDocenteHasEstudianteRequiredMessage_docenteHasEstudiantePK_estudianteIdestudiante}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{docenteHasEstudianteController.create}" value="#{bundle.CreateDocenteHasEstudianteSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{docenteHasEstudianteController.prepareList}" value="#{bundle.CreateDocenteHasEstudianteShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateDocenteHasEstudianteIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
