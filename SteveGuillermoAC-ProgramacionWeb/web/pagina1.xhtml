@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./plantilla1.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    
+
+    <ui:define name="top">
+        top
+    </ui:define>
+
+    <ui:define name="content">
+     
+        <center><h1>FORMULARIO DE REGISTRO</h1></center>
+        <br/>
+        
+       
+        <center>
+        <h3>Nombre</h3>
+        <input type="text" name="" value="" />
+        
+        <h3>Apellido</h3>
+        <input type="text" name="" value="" />
+        
+        <h3>Correo</h3>
+        <input type="text" name="" value="" />
+        
+        <h3>Direccion</h3>
+        <input type="text" name="" value="" />
+        
+        <h3>Telefono</h3>
+        <input type="text" name="" value="" />
+        
+        <h3>Provincia</h3>
+       
+        <select name="Provincia" size="4">
+            
+            <option>Azuay</option>
+            <option>Bolívar</option>
+            <option>Cañar</option>
+            <option>Carchi</option>
+            <option>Chimborazo</option>
+            <option>Cotopaxi</option>
+            <option>El Oro</option>
+            <option>Esmeraldas</option>
+            <option>Galápagos</option>
+            <option>Guayas</option>
+            <option>Imbabura</option>
+            <option>Loja</option>
+            <option>Los Ríos</option>
+            <option>Manabí</option>
+            <option>Morona Santiago</option>
+            <option>Napo</option>
+            <option>Orellana</option>
+            <option>Pastaza</option>
+            <option>Pichincha</option>
+            <option>Santa Elena</option>
+            <option>Santo Domingo de los Tsáchilas</option>
+            <option>Sucumbíos</option>
+            <option>Tungurahua</option>
+            <option>Zamora Chinchipe</option>
+        </select>
+        
+        <input type="submit" value="REGISTRAR" /></center> 
+    
+        <h/>
+    </ui:define>
+
+    <ui:define name="bottom">
+        <h:form>
+<p:panelGrid>
+                <p:inputNumber value="#{primerBean.valor1}" maxValue="100" decimalPlaces="2" decimalSeparator=";" emptyValue="Ingrese un valor" >
+                    <p:ajax update="p1" />
+                </p:inputNumber>
+                <p:outputLabel id="salida1" value="#{primerBean.valor1}"></p:outputLabel>
+                <p:inputText disabled="true" id="p1" value="#{primerBean.valor1}"></p:inputText>
+                <p:inputSwitch></p:inputSwitch>
+                <br></br>
+                
+                
+                <p:outputLabel value="Ingrese su nombre"></p:outputLabel>
+                <p:inputText value="#{primerBean.nombre}">
+                    <p:ajax update="nombre" />
+                </p:inputText>
+                <p:outputLabel id="nombre" value="#{primerBean.nombre}"/>              
+            </p:panelGrid>                     
+            <p:outputLabel value="Materias: "></p:outputLabel>          
+            <p:selectOneButton  id="opcion1" value="#{primerBean.opcion}">            
+                <f:selectItem itemLabel="Ingles IV" itemValue="Ingles IV"/>
+                <f:selectItem itemLabel="Prog Web" itemValue="Prog Web"/>
+                <f:selectItem itemLabel="Prog Movil" itemValue="Prog Movil"/>
+                <f:selectItem itemLabel="Div Cultural" itemValue="Div Cultural"/>
+                <f:selectItem itemLabel="Leg Informat" itemValue="Leg Informat"/>
+                <f:selectItem itemLabel="Est Descript" itemValue="Est Descript"/>
+                <p:ajax update="opcion"/>
+            </p:selectOneButton>          
+           
+            <p:outputLabel id="opcion" value="#{primerBean.opcion}" >               
+                 
+            </p:outputLabel>
+            <br></br>
+                        <p:outputLabel value="Materias: "></p:outputLabel>          
+            <p:selectManyButton  id="opciones1" value="#{primerBean.lista}">            
+                <f:selectItem itemLabel="Ingles IV" itemValue="Ingles IV"/>
+                <f:selectItem itemLabel="Prog Web" itemValue="Prog Web"/>
+                <f:selectItem itemLabel="Prog Movil" itemValue="Prog Movil"/>
+                <f:selectItem itemLabel="Div Cultural" itemValue="Div Cultural"/>
+                <f:selectItem itemLabel="Leg Informat" itemValue="Leg Informat"/>
+                <f:selectItem itemLabel="Est Descript" itemValue="Est Descript"/>
+                <p:ajax update="opciones"/>
+            </p:selectManyButton>          
+           
+            <p:outputLabel id="opciones" value="#{primerBean.lista}" >               
+                 
+            </p:outputLabel>
+            </h:form>
+        
+        <h:form>
+    <p:growl id="msg" />
+ 
+    <h:panelGrid columns="1" style="margin-bottom:10px" cellpadding="5">
+        <p:selectBooleanCheckbox value="#{selectBooleanView.value1}" itemLabel="Basic"/>
+ 
+        <p:selectBooleanCheckbox value="#{selectBooleanView.value2}" itemLabel="Ajax">
+            <p:ajax update="msg" listener="#{selectBooleanView.addMessage}" />
+        </p:selectBooleanCheckbox>
+    </h:panelGrid>
+ 
+    <p:commandButton value="Submit" icon="pi pi-check" update="display" oncomplete="PF('dlg').show()" />
+ 
+    <p:dialog header="Values" modal="true" resizable="false" showEffect="fade" widgetVar="dlg">
+        <h:panelGrid columns="1" id="display">
+            <h:outputText value="Value 1: #{selectBooleanView.value1}" />
+            <h:outputText value="Value 2: #{selectBooleanView.value2}" />
+        </h:panelGrid>
+    </p:dialog>
+</h:form>
+    </ui:define>
+
+</ui:composition>
+
+
+
